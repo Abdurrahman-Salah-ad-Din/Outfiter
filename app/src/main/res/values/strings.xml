@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">Outfiter</string>
+    <string name="app_name">Outfitter</string>
+    <string name="today">Today</string>
+    <string name="outfit">Outfit</string>
+    <string name="_10_days">10 days</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="cairo">Cairo</string>
 </resources>
