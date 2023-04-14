@@ -6,4 +6,12 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cairo">Cairo</string>
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="uv_index">UV index</string>
+    <string name="chance_of_rain">Chance of rain</string>
+    <string name="sunrise_sunset">Sunrise/sunset</string>
+    <string name="c">°C</string>
+    <string name="pick_my_outfit">Pick my outfit</string>
+    <string name="press_the_pick_my_outfit_button_to_get_the_outfit_of_your_day">Press the pick my outfit button to get the outfit of your day</string>
 </resources>

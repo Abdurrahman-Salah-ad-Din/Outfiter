@@ -5,16 +5,26 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aboda.learning.outfiter.R
+import com.aboda.learning.outfiter.data.model.DailyWeather
+import com.aboda.learning.outfiter.databinding.FragmentTenDaysBinding
 
-class TenDaysFragment : Fragment() {
+class TenDaysFragment(private val allDailyWeather: List<DailyWeather>) : Fragment() {
+
+    private lateinit var binding: FragmentTenDaysBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ten_days, container, false)
+    ): View {
+        binding = FragmentTenDaysBinding.inflate(layoutInflater, container, false)
+        loadDataToRecyclerView()
+        return binding.root
+    }
+
+    private fun loadDataToRecyclerView() {
+        val dailyWeatherAdapter = DailyWeatherAdapter()
+        dailyWeatherAdapter.submitList(allDailyWeather)
+        binding.recyclerViewTenDays.adapter = dailyWeatherAdapter
     }
 
 }
