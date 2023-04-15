@@ -6,6 +6,7 @@ import java.util.*
 
 const val ALL_DAILY_WEATHER = "ALL_DAILY_WEATHER"
 const val TODAY = "TODAY"
+const val EIGHT_HOURS = 1000 * 60 * 60 * 8
 
 fun View.makeVisible() {
     this.visibility = View.VISIBLE
