@@ -1,8 +1,11 @@
 package com.aboda.learning.outfiter.data.model
 
+import android.os.Parcelable
 import androidx.annotation.DrawableRes
+import kotlinx.parcelize.Parcelize
 
-data class DailyWeather (
+@Parcelize
+data class DailyWeather(
     val dayDate: String,
     val dayHours: List<HourlyWeather>,
     val maxTemperature: Double,
@@ -14,4 +17,4 @@ data class DailyWeather (
     val windSpeed: Double,
     val stringState: String,
     @DrawableRes val dailyWeatherState: Int
-)
+) : Parcelable
