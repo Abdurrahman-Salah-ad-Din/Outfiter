@@ -8,13 +8,11 @@
 
     <TextView
         android:id="@+id/text_view_hint"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/space_16"
         android:text="@string/press_the_pick_my_outfit_button_to_get_the_outfit_of_your_day"
         app:layout_constraintBottom_toTopOf="@+id/button_pick_my_outfit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
