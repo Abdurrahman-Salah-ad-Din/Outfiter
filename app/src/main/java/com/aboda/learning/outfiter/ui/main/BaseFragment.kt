@@ -7,11 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
+import com.aboda.learning.outfiter.ui.utils.ALL_DAILY_WEATHER
 import com.aboda.learning.outfiter.ui.utils.TODAY
 
 abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
 
     abstract val bindingInflater: (LayoutInflater) -> viewBinding
+    abstract val name: String
     private var _binding: viewBinding? = null
 
     protected val binding: viewBinding
@@ -31,10 +33,18 @@ abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
         _binding = null
     }
 
-    fun <T : Parcelable> createArgument(value: T) =
+    fun <T : Parcelable> createBundleWithParcelable(value: T) =
         this.apply {
             arguments = Bundle().apply {
                 putParcelable(TODAY, value)
             }
         }
+
+    fun createBundleWithParcelableArray(value: Array<Parcelable>) =
+        this.apply {
+            arguments = Bundle().apply {
+                putParcelableArray(ALL_DAILY_WEATHER, value)
+            }
+        }
+
 }
