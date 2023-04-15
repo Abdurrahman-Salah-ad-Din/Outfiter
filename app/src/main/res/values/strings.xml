@@ -3,8 +3,6 @@
     <string name="today">Today</string>
     <string name="outfit">Outfit</string>
     <string name="_10_days">10 days</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cairo">Cairo</string>
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
@@ -12,6 +10,11 @@
     <string name="chance_of_rain">Chance of rain</string>
     <string name="sunrise_sunset">Sunrise/sunset</string>
     <string name="c">°C</string>
+    <string name="formatted_temperature">%1$d°</string>
+    <string name="formatted_percentage">%1$d%%</string>
+    <string name="sunrise_sunset_text">%1$s, %2$s</string>
+    <string name="speed_text">%1$s Km/h</string>
+    <string name="max_min_day_night_temperature">"Day %1$d°↑ . Night %2$d°↓"</string>
     <string name="pick_my_outfit">Pick my outfit</string>
     <string name="press_the_pick_my_outfit_button_to_get_the_outfit_of_your_day">Press the pick my outfit button to get the outfit of your day</string>
 </resources>
