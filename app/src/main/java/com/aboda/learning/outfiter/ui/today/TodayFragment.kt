@@ -3,13 +3,13 @@ package com.aboda.learning.outfiter.ui.today
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.Fragment
 import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.HourlyWeather
 import com.aboda.learning.outfiter.databinding.FragmentTodayBinding
+import com.aboda.learning.outfiter.ui.main.BaseFragment
+import com.aboda.learning.outfiter.ui.utils.TODAY
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
@@ -17,20 +17,16 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 
+class TodayFragment() : BaseFragment<FragmentTodayBinding>() {
 
-class TodayFragment(private val today: DailyWeather) : Fragment() {
+    override val bindingInflater: (LayoutInflater) -> FragmentTodayBinding =
+        FragmentTodayBinding::inflate
 
-    private lateinit var binding: FragmentTodayBinding
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = FragmentTodayBinding.inflate(layoutInflater, container, false)
-        return binding.root
-    }
+    private lateinit var today: DailyWeather
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        today = arguments?.getParcelable(TODAY)!!
         loadTodayData()
     }
 
@@ -46,7 +42,6 @@ class TodayFragment(private val today: DailyWeather) : Fragment() {
         dataSet.valueTextColor = requireContext().getColor(R.color.md_theme_onBackground)
         val lineData = LineData(dataSet)
         dataSet.setDrawFilled(true)
-        dataSet.setDrawCircles(true)
         dataSet.fillDrawable =
             ContextCompat.getDrawable(requireContext(), R.drawable.line_chart_background)
         dataSet.mode = LineDataSet.Mode.CUBIC_BEZIER
@@ -60,11 +55,13 @@ class TodayFragment(private val today: DailyWeather) : Fragment() {
     }
 
     private fun setUpLineChartBackground() {
-        binding.lineChart.axisLeft.isEnabled = false
-        binding.lineChart.axisRight.isEnabled = false
-        binding.lineChart.xAxis.isEnabled = false
-        binding.lineChart.description.isEnabled = false
-        binding.lineChart.legend.isEnabled = false
+        binding.apply {
+            lineChart.axisLeft.isEnabled = false
+            lineChart.axisRight.isEnabled = false
+            lineChart.xAxis.isEnabled = false
+            lineChart.description.isEnabled = false
+            lineChart.legend.isEnabled = false
+        }
     }
 
     private fun loadTodayData() {
@@ -79,10 +76,13 @@ class TodayFragment(private val today: DailyWeather) : Fragment() {
     }
 
     private fun setUpWeatherData(today: DailyWeather) {
+        val now = getNow(today)
         binding.apply {
             textViewDateTime.text = formatDateAndTime(Date(), "MMMM d, h:mm a")
-            textViewMaxMin.text = "Day ${today.maxTemperature}°↑. Night ${today.minTemperature}°↓"
-            val now = getNow(today)
+            textViewMaxMin.text = requireContext().getString(
+                R.string.max_min_day_night_temperature,
+                today.maxTemperature.toInt(), today.minTemperature.toInt()
+            )
             textViewTemperature.text = now.temperature.toString()
             textViewState.text = today.stringState
             imageViewState.setImageResource(now.HourlyWeatherState)
