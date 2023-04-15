@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.HourlyWeather
 import com.aboda.learning.outfiter.databinding.ItemHourlyWeatherBinding
 import com.aboda.learning.outfiter.ui.utils.formatTime
@@ -30,7 +31,8 @@ class HourlyWeatherAdapter() :
         fun bind(hourlyWeather: HourlyWeather) {
             binding.textViewHourlyWeatherTime.text = formatTime(hourlyWeather.time,
                 "yyyy-MM-dd'T'HH:mm", "h a")
-            binding.textViewHourlyWeatherTemperature.text = "${hourlyWeather.temperature.toInt()}°"
+            binding.textViewHourlyWeatherTemperature.text = binding.root.context.getString(R.string
+                .formatted_temperature, hourlyWeather.temperature.toInt())
             binding.imageViewHourlyWeatherState.setImageResource(hourlyWeather.HourlyWeatherState)
         }
     }

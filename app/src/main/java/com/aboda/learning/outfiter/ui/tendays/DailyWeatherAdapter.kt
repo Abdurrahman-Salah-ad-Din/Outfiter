@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.HourlyWeather
 import com.aboda.learning.outfiter.ui.utils.makeGone
@@ -31,18 +32,39 @@ class DailyWeatherAdapter : ListAdapter<DailyWeather, DailyWeatherAdapter.DailyW
             val hourlyAdapter = HourlyWeatherAdapter()
             hourlyAdapter.submitList(dailyWeather.dayHours)
             binding.apply {
-                textViewWeatherItemMaxTemperature.text = "${dailyWeather.maxTemperature}°"
-                textViewWeatherItemMinTemperature.text = "${dailyWeather.minTemperature}°"
-                textViewHumidity.text = "${getHumidity(dailyWeather.dayHours)}%"
-                textViewSunsetSunrise.text = "${formatTime(dailyWeather.sunRise,"yyyy-MM-dd'T'HH:mm", "h:mm a")}," +
-                        " ${formatTime(dailyWeather.sunSet,"yyyy-MM-dd'T'HH:mm", "h:mm a")}"
-                textViewWind.text = "${dailyWeather.windSpeed} Km/h"
-                textViewWeatherItemDate.text = formatTime(dailyWeather.dayDate, "yyyy-MM-dd",
-                    "EEEE, MMM d")
+                val context = binding.root.context
+                textViewWeatherItemMaxTemperature.text = context.getString(
+                    R.string.formatted_temperature,
+                    dailyWeather.maxTemperature.toInt()
+                )
+                textViewWeatherItemMinTemperature.text = context.getString(
+                    R.string.formatted_temperature,
+                    dailyWeather.minTemperature.toInt()
+                )
+                textViewHumidity.text = context.getString(
+                    R.string.formatted_percentage,
+                    getHumidity(dailyWeather.dayHours)
+                )
+                textViewSunsetSunrise.text = context.getString(
+                    R.string.sunrise_sunset_text,
+                    formatTime(dailyWeather.sunRise, "yyyy-MM-dd'T'HH:mm", "h:mm a"),
+                    formatTime(dailyWeather.sunSet, "yyyy-MM-dd'T'HH:mm", "h:mm a")
+                )
+                textViewWind.text = context.getString(
+                    R.string.speed_text,
+                    dailyWeather.windSpeed.toString()
+                )
+                textViewWeatherItemDate.text = formatTime(
+                    dailyWeather.dayDate, "yyyy-MM-dd",
+                    "EEEE, MMM d"
+                )
+                textViewChanceOfRain.text = context.getString(
+                    R.string.formatted_percentage,
+                    dailyWeather.precipitationProbability
+                )
                 imageViewWeatherItemState.setImageResource(dailyWeather.dailyWeatherState)
                 textViewUvIndex.text = dailyWeather.UVIndex.toString()
                 textViewWeatherItemState.text = dailyWeather.stringState
-                textViewChanceOfRain.text = "${dailyWeather.precipitationProbability}%"
                 recyclerViewHourlyWeather.adapter = hourlyAdapter
                 binding.weatherDataContainer.setOnClickListener {
                     if (expendedDataContainer.visibility == View.VISIBLE)
@@ -54,7 +76,7 @@ class DailyWeatherAdapter : ListAdapter<DailyWeather, DailyWeatherAdapter.DailyW
         }
 
         private fun getHumidity(dayHours: List<HourlyWeather>) = (dayHours.sumOf { it.humidity } /
-                dayHours.size).toString()
+                dayHours.size)
 
     }
 
