@@ -13,7 +13,6 @@ import com.aboda.learning.outfiter.ui.utils.TODAY
 abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
 
     abstract val bindingInflater: (LayoutInflater) -> viewBinding
-    abstract val name: String
     private var _binding: viewBinding? = null
 
     protected val binding: viewBinding

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.EgyptianCity
 import com.aboda.learning.outfiter.data.network.ApiService
@@ -83,9 +84,9 @@ class MainActivity : AppCompatActivity(), NetworkService {
             binding.fragmentContainer.adapter = fragmentsAdapter
             TabLayoutMediator(binding.tabLayout, binding.fragmentContainer) { tab, position ->
                 when (position) {
-                    0 -> tab.text = todayFragment.name
-                    1 -> tab.text = outfitFragment.name
-                    2 -> tab.text = tenDaysFragment.name
+                    0 -> tab.text = getString(R.string.today)
+                    1 -> tab.text = getString(R.string.outfit)
+                    2 -> tab.text = getString(R.string._10_days)
                 }
             }.attach()
         }
