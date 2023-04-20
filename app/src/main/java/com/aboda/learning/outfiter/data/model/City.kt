@@ -1,6 +1,6 @@
 package com.aboda.learning.outfiter.data.model
 
-enum class EgyptianCity(val cityName: String, val latitude: Double, val longitude: Double) {
+enum class City(val cityName: String, val latitude: Double, val longitude: Double) {
     CAIRO("Cairo", 30.0444, 31.2357),
     ALEXANDRIA("Alexandria", 31.2001, 29.9187),
     GIZA("Giza", 30.0131, 31.2089),

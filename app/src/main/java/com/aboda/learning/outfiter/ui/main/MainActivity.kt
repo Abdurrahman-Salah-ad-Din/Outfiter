@@ -6,7 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.DailyWeather
-import com.aboda.learning.outfiter.data.model.EgyptianCity
+import com.aboda.learning.outfiter.data.model.City
 import com.aboda.learning.outfiter.data.network.ApiService
 import com.aboda.learning.outfiter.data.network.NetworkService
 import com.aboda.learning.outfiter.databinding.ActivityMainBinding
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity(), NetworkService {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         addCallback()
-        fetchWeatherDataForCity(EgyptianCity.CAIRO)
+        fetchWeatherDataForCity(City.CAIRO)
     }
 
     private fun addCallback() {
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity(), NetworkService {
             ) {
                 val searchResult = getSearchResult(newText.toString())
                 val searchCityAdapter = SearchCityAdapter(object : OnCityClickListener {
-                    override fun onCityClick(city: EgyptianCity) {
+                    override fun onCityClick(city: City) {
                         binding.searchBar.hint = city.cityName
                         binding.searchView.hide()
                         fetchWeatherDataForCity(city)
@@ -54,11 +54,11 @@ class MainActivity : AppCompatActivity(), NetworkService {
         })
     }
 
-    private fun getSearchResult(text: String): List<EgyptianCity> {
-        return EgyptianCity.values().filter { it.cityName.contains(text) }
+    private fun getSearchResult(text: String): List<City> {
+        return City.values().filter { it.cityName.contains(text) }
     }
 
-    private fun fetchWeatherDataForCity(city: EgyptianCity) {
+    private fun fetchWeatherDataForCity(city: City) {
         val api = ApiService(this, city)
         api.fetchData()
     }

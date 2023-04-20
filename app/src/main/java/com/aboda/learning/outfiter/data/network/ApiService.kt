@@ -1,14 +1,14 @@
 package com.aboda.learning.outfiter.data.network
 
 import android.util.Log
-import com.aboda.learning.outfiter.data.model.EgyptianCity
+import com.aboda.learning.outfiter.data.model.City
 import com.aboda.learning.outfiter.data.model.parseDailyResponse
 import okhttp3.*
 import java.io.IOException
 
 class ApiService(
     private val networkService: NetworkService,
-    city: EgyptianCity
+    city: City
 ) : Callback {
 
     private val url = HttpUrl.Builder()
