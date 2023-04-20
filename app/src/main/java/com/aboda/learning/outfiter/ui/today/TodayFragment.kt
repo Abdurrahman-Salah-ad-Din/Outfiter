@@ -9,7 +9,7 @@ import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.HourlyWeather
 import com.aboda.learning.outfiter.databinding.FragmentTodayBinding
 import com.aboda.learning.outfiter.ui.main.BaseFragment
-import com.aboda.learning.outfiter.ui.utils.TODAY
+import com.aboda.learning.outfiter.utils.TODAY
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet

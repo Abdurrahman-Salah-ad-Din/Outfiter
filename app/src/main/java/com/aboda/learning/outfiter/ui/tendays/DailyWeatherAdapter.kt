@@ -9,10 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.HourlyWeather
-import com.aboda.learning.outfiter.ui.utils.makeGone
-import com.aboda.learning.outfiter.ui.utils.makeVisible
+import com.aboda.learning.outfiter.utils.makeGone
+import com.aboda.learning.outfiter.utils.makeVisible
 import com.aboda.learning.outfiter.databinding.ItemDailyWeatherBinding
-import com.aboda.learning.outfiter.ui.utils.formatTime
+import com.aboda.learning.outfiter.utils.formatTime
 
 class DailyWeatherAdapter : ListAdapter<DailyWeather, DailyWeatherAdapter.DailyWeatherViewHolder>(
     DailyWeatherItemDiffCallback()

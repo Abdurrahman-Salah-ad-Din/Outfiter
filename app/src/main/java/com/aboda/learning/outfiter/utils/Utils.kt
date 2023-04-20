@@ -1,4 +1,4 @@
-package com.aboda.learning.outfiter.ui.utils
+package com.aboda.learning.outfiter.utils
 
 import android.view.View
 import java.text.SimpleDateFormat

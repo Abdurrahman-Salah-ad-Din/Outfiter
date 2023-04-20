@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
-import com.aboda.learning.outfiter.ui.utils.ALL_DAILY_WEATHER
-import com.aboda.learning.outfiter.ui.utils.TODAY
+import com.aboda.learning.outfiter.utils.ALL_DAILY_WEATHER
+import com.aboda.learning.outfiter.utils.TODAY
 
 abstract class BaseFragment<viewBinding : ViewBinding> : Fragment() {
 

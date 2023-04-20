@@ -6,7 +6,7 @@ import android.view.View
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.databinding.FragmentTenDaysBinding
 import com.aboda.learning.outfiter.ui.main.BaseFragment
-import com.aboda.learning.outfiter.ui.utils.ALL_DAILY_WEATHER
+import com.aboda.learning.outfiter.utils.ALL_DAILY_WEATHER
 
 
 class TenDaysFragment() : BaseFragment<FragmentTenDaysBinding>() {

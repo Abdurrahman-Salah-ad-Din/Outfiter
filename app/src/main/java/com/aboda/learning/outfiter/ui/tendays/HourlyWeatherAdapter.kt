@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.aboda.learning.outfiter.R
 import com.aboda.learning.outfiter.data.model.HourlyWeather
 import com.aboda.learning.outfiter.databinding.ItemHourlyWeatherBinding
-import com.aboda.learning.outfiter.ui.utils.formatTime
+import com.aboda.learning.outfiter.utils.formatTime
 
 class HourlyWeatherAdapter() :
     ListAdapter<HourlyWeather, HourlyWeatherAdapter.HourlyWeatherViewHolder>(HourlyWeatherItemDiffCallback()) {

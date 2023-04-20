@@ -13,10 +13,10 @@ import com.aboda.learning.outfiter.data.model.Outfit
 import com.aboda.learning.outfiter.data.model.WeatherState
 import com.aboda.learning.outfiter.databinding.FragmentOutfitBinding
 import com.aboda.learning.outfiter.ui.main.BaseFragment
-import com.aboda.learning.outfiter.ui.utils.EIGHT_HOURS
-import com.aboda.learning.outfiter.ui.utils.TODAY
-import com.aboda.learning.outfiter.ui.utils.makeGone
-import com.aboda.learning.outfiter.ui.utils.makeVisible
+import com.aboda.learning.outfiter.utils.EIGHT_HOURS
+import com.aboda.learning.outfiter.utils.TODAY
+import com.aboda.learning.outfiter.utils.makeGone
+import com.aboda.learning.outfiter.utils.makeVisible
 
 class OutfitFragment() : BaseFragment<FragmentOutfitBinding>() {
 
