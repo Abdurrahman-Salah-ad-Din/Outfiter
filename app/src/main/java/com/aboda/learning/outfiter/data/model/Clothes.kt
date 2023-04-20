@@ -5,5 +5,5 @@ import androidx.annotation.DrawableRes
 data class Clothes(
     @DrawableRes val clothes: Int,
     val name: String,
-    val state: String?
+    val state: WeatherState?
 )

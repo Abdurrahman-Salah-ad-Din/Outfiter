@@ -15,6 +15,6 @@ data class DailyWeather(
     val UVIndex: Double,
     val precipitationProbability: Int?,
     val windSpeed: Double,
-    val stringState: String,
+    val weatherState: WeatherState,
     @DrawableRes val dailyWeatherState: Int
 ) : Parcelable

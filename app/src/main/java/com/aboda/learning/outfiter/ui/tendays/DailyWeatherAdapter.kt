@@ -64,7 +64,7 @@ class DailyWeatherAdapter : ListAdapter<DailyWeather, DailyWeatherAdapter.DailyW
                 )
                 imageViewWeatherItemState.setImageResource(dailyWeather.dailyWeatherState)
                 textViewUvIndex.text = dailyWeather.UVIndex.toString()
-                textViewWeatherItemState.text = dailyWeather.stringState
+                textViewWeatherItemState.text = dailyWeather.weatherState.value
                 recyclerViewHourlyWeather.adapter = hourlyAdapter
                 binding.weatherDataContainer.setOnClickListener {
                     if (expendedDataContainer.visibility == View.VISIBLE)

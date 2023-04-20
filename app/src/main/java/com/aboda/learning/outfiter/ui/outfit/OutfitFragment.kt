@@ -10,6 +10,7 @@ import com.aboda.learning.outfiter.data.local.SharedPreferenceService
 import com.aboda.learning.outfiter.data.model.Clothes
 import com.aboda.learning.outfiter.data.model.DailyWeather
 import com.aboda.learning.outfiter.data.model.Outfit
+import com.aboda.learning.outfiter.data.model.WeatherState
 import com.aboda.learning.outfiter.databinding.FragmentOutfitBinding
 import com.aboda.learning.outfiter.ui.main.BaseFragment
 import com.aboda.learning.outfiter.ui.utils.EIGHT_HOURS
@@ -110,13 +111,11 @@ class OutfitFragment() : BaseFragment<FragmentOutfitBinding>() {
     }
 
     private fun pickMyOutfit(): Outfit {
-        val tShirt = when (today.stringState) {
-            "Cold", "Windy" -> getTShirtByState("Cold", "Windy")
-            "Partly cloudy", "Cloudy" -> getTShirtByState("Mostly cloudy", "Cloudy")
-            "Mostly cloudy", "Sunny" -> getTShirtByState("Partly cloudy", "Sunny")
-            else -> getTShirtByState("Partly cloudy", "Sunny")
-            // الميثود دي getHotTShirt() المفروض هنافي ال else
-            // بس لسه مطلعتش الهدوم الصيفي :(
+        val tShirt = when (today.weatherState) {
+            WeatherState.COLD, WeatherState.WINDY -> getTShirtByState(WeatherState.COLD, WeatherState.WINDY)
+            WeatherState.PARTLY_CLOUDY, WeatherState.CLOUDY -> getTShirtByState(WeatherState.MOSTLY_CLOUDY, WeatherState.CLOUDY)
+            WeatherState.MOSTLY_CLOUDY, WeatherState.SUNNY -> getTShirtByState(WeatherState.PARTLY_CLOUDY, WeatherState.SUNNY)
+            else -> getTShirtByState(WeatherState.PARTLY_CLOUDY, WeatherState.SUNNY)
         }
         val pants = getPants()
         return Outfit(tShirt, pants)
@@ -132,8 +131,8 @@ class OutfitFragment() : BaseFragment<FragmentOutfitBinding>() {
         return pants[0]
     }
 
-    private fun getTShirtByState(firstState: String, lastState: String): Clothes {
-        var shirts = clothesData.allTShirts.filter { it.state == firstState || it.state == lastState }
+    private fun getTShirtByState(firstState: WeatherState, lastState: WeatherState): Clothes {
+        var shirts = clothesData.allTShirts.filter { it.state ==  firstState || it.state == lastState }
         val oldShirtName = sharedPreferenceService.getShirtName()
         while (shirts[0].name == oldShirtName) {
             shirts = shirts.shuffled()

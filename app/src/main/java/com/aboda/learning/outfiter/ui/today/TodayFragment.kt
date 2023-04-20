@@ -84,7 +84,7 @@ class TodayFragment() : BaseFragment<FragmentTodayBinding>() {
                 today.maxTemperature.toInt(), today.minTemperature.toInt()
             )
             textViewTemperature.text = now.temperature.toString()
-            textViewState.text = today.stringState
+            textViewState.text = today.weatherState.value
             imageViewState.setImageResource(now.HourlyWeatherState)
         }
     }
