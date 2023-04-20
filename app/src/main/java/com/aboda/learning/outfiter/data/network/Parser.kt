@@ -66,17 +66,17 @@ fun parseDailyResponse(dailyResponse: String?): List<DailyWeather> {
 private fun getWeatherState(
     cloudCover: Int, maxTemperature: Double, minTemperature: Double,
     windSpeed: Double
-): String {
+): WeatherState {
     val isCold = minTemperature < 10
     val isWindy = windSpeed >= 10
     return when {
-        isCold -> "Cold"
-        cloudCover <= 10 -> "Sunny"
-        cloudCover <= 50 -> "Partly cloudy"
-        cloudCover <= 90 -> "Mostly cloudy"
-        maxTemperature >= 30 -> "Hot"
-        isWindy -> "Windy"
-        else -> "Cloudy"
+        isCold -> WeatherState.COLD
+        cloudCover <= 10 -> WeatherState.SUNNY
+        cloudCover <= 50 -> WeatherState.PARTLY_CLOUDY
+        cloudCover <= 90 -> WeatherState.MOSTLY_CLOUDY
+        maxTemperature >= 30 -> WeatherState.HOT
+        isWindy -> WeatherState.WINDY
+        else -> WeatherState.CLOUDY
     }
 }
 
